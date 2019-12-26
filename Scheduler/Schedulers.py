@@ -159,7 +159,7 @@ def RR(processes, contextSwitch=1, quantum=1):
     plotX = []
     plotY = []
     while(True):
-        while(len(processes)>0 and processes[-1][1]==time):
+        while(len(processes)>0 and processes[-1][1]<=time):
             p = processes.pop()
             '''
             0 -> Remaining Time
@@ -236,7 +236,7 @@ def SRTN(processes,contextSwitch=1):
     plotX = []
     plotY = []
     while(True):
-        while(len(processes)>0 and processes[-1][1]==time):
+        while(len(processes)>0 and processes[-1][1]<=time):
             p = processes.pop()
             '''
             0 -> Remaining Time
@@ -262,7 +262,7 @@ def SRTN(processes,contextSwitch=1):
                     cur = ready.get()
                 
         plotX.append(time)
-        
+        print(len(processes),ready.qsize(),time)
         if(busy == True):
             cur[0]-=1
             plotY.append(cur[1]+1)
